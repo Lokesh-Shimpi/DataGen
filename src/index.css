@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Dataset Generator & Analyzer Design System
+  ==========================================
+  3-Color Palette (STRICT):
+  - Primary: Deep Blue (#1E3A8A) → hsl(224, 64%, 33%)
+  - Secondary: White (#FFFFFF) → hsl(0, 0%, 100%)
+  - Accent: Soft Gray (#E5E7EB) → hsl(220, 14%, 91%)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Primary: Deep Blue */
+    --primary: 224 64% 33%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Background: White */
+    --background: 0 0% 100%;
+    --foreground: 224 64% 33%;
+    
+    /* Card: White with subtle distinction */
+    --card: 0 0% 100%;
+    --card-foreground: 224 64% 33%;
+    
+    /* Popover: White */
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 64% 33%;
+    
+    /* Secondary: Soft Gray */
+    --secondary: 220 14% 91%;
+    --secondary-foreground: 224 64% 33%;
+    
+    /* Muted: Soft Gray variants */
+    --muted: 220 14% 91%;
+    --muted-foreground: 224 30% 45%;
+    
+    /* Accent: Soft Gray */
+    --accent: 220 14% 91%;
+    --accent-foreground: 224 64% 33%;
+    
+    /* Destructive: Using primary blue for consistency */
+    --destructive: 224 64% 33%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border: Soft Gray */
+    --border: 220 14% 85%;
+    --input: 220 14% 85%;
+    --ring: 224 64% 33%;
+    
+    --radius: 0.5rem;
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 224 64% 33%;
+    --sidebar-primary: 224 64% 33%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 91%;
+    --sidebar-accent-foreground: 224 64% 33%;
+    --sidebar-border: 220 14% 85%;
+    --sidebar-ring: 224 64% 33%;
+    
+    /* Custom Design Tokens */
+    --shadow-soft: 0 1px 3px 0 hsl(224 64% 33% / 0.1), 0 1px 2px -1px hsl(224 64% 33% / 0.1);
+    --shadow-medium: 0 4px 6px -1px hsl(224 64% 33% / 0.1), 0 2px 4px -2px hsl(224 64% 33% / 0.1);
+    --shadow-large: 0 10px 15px -3px hsl(224 64% 33% / 0.1), 0 4px 6px -4px hsl(224 64% 33% / 0.1);
+    
+    /* Spacing Scale */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Focus states for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Skeleton animation */
+  .skeleton {
+    @apply animate-pulse bg-secondary rounded;
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-shadow duration-200 hover:shadow-[var(--shadow-medium)];
+  }
+  
+  /* Button base styles */
+  .btn-base {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
